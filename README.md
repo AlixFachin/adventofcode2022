@@ -29,3 +29,10 @@ I guess I am glad that Rust is a low-level language, overall everything was quit
 * Second question is to find a character common in three strings. I guess a small difficulty in grouping the input strings three by three.
 Looking forward to day 4!
 
+### Day 4
+Testing the new cargo setup. It's great! (Without cargo setup I cannot get VSCode autocomplete and proper syntax highlighting).
+Today the file contains interval descriptions, and the goal is to count intervals included into each other (question 1) or overlapping (question 2).
+* I used regex to parse the description strings `a-b,c-d` which gives me the interval descriptions.
+* Intervals included into each other is pretty easy test. Overlapping is a touch more complicated, so I test if the intervals are completely disjoint, which ends up to the same thing.
+* To note stupid mistakes today: not looking at the proper input file 🤦 and the regex not parsing the last line of such input file 🤦🤦
+
