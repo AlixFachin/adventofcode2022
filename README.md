@@ -36,3 +36,11 @@ Today the file contains interval descriptions, and the goal is to count interval
 * Intervals included into each other is pretty easy test. Overlapping is a touch more complicated, so I test if the intervals are completely disjoint, which ends up to the same thing.
 * To note stupid mistakes today: not looking at the proper input file 🤦 and the regex not parsing the last line of such input file 🤦🤦
 
+### Day 5
+Ouch. Today a big challenge with `Rust` and my understanding of mutable references and borrowing.
+It's late and after a big day of work I find my code rather dirty (but it works, so 🤷)
+The problem is about a crane picking up crates and moving them to other stacks, and it reminded me of the Towers of Hanoi.
+* In any case, I chose to model each stack with a string. Rust offers the string methods `pop` and `push`, which is all I need.
+* I just need to parse each command, pop the proper amount from the proper string and push it back on the good string afterwards.
+* For question 2, I need to keep the same order - so I use a temporary stack to reverse order, then reverse order again which finishes with me having the proper order. 👍
+I still have trouble understanding `mut` and `borrowing`. There must be a more elegant way to do it than what I ended up with.
