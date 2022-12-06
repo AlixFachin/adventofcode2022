@@ -31,7 +31,7 @@ pub fn solve() {
             "Moving {} from {} to {}",
             &nr_crates, &from_stack, &to_stack
         );
-        for i in 1..=nr_crates {
+        for _i in 1..=nr_crates {
             // The lines below seems like a strange dance to allow mut variables
             let mut x = stacks[from_stack].clone();
             let c = x.pop().expect("woops");

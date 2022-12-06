@@ -44,3 +44,8 @@ The problem is about a crane picking up crates and moving them to other stacks, 
 * I just need to parse each command, pop the proper amount from the proper string and push it back on the good string afterwards.
 * For question 2, I need to keep the same order - so I use a temporary stack to reverse order, then reverse order again which finishes with me having the proper order. 👍
 I still have trouble understanding `mut` and `borrowing`. There must be a more elegant way to do it than what I ended up with.
+
+### Day 6
+Today was easier than expected. The idea is to extract a substring at various indexes from the string and check if there are any duplicates.
+Luckily Rust knows how to extract a substring pretty easily, and the extracted string is very short (4 and 14 characters), so I could allow to have a "heavy but quick to write" algorithm to detect duplicates. (Basically I transform the substring into an array, sort it, and then check if two consecutive characters are equal).
+Looking forward to tomorrow's challenge! 💪

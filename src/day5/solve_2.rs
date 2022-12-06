@@ -33,14 +33,14 @@ pub fn solve() {
         );
         let mut temp_string: String = String::new();
         let mut x = stacks[from_stack].clone();
-        for i in 1..=nr_crates {
+        for _i in 1..=nr_crates {
             // The lines below seems like a strange dance to allow mut variables
             let c = x.pop().expect("woops");
             temp_string.push(c);
         }
         stacks[from_stack] = x;
         let mut d = stacks[to_stack].clone();
-        for i in 1..=nr_crates {
+        for _i in 1..=nr_crates {
             // The lines below seems like a strange dance to allow mut variables
             let c = temp_string.pop().expect("cannot unpop of temp string");
             d.push(c);
