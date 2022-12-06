@@ -16,6 +16,13 @@ fn has_doubles(src: &str) -> bool {
     return false;
 }
 
+#[test]
+fn detect_doubles_properly() {
+    assert!(has_doubles(&"abca"));
+    assert!(has_doubles(&"abbd"));
+    assert!(!has_doubles(&"abcd"));
+}
+
 pub fn solve() {
     let contents = fs::read_to_string(FILEPATH).expect("Should have been able to read the file");
 
