@@ -49,3 +49,10 @@ I still have trouble understanding `mut` and `borrowing`. There must be a more e
 Today was easier than expected. The idea is to extract a substring at various indexes from the string and check if there are any duplicates.
 Luckily Rust knows how to extract a substring pretty easily, and the extracted string is very short (4 and 14 characters), so I could allow to have a "heavy but quick to write" algorithm to detect duplicates. (Basically I transform the substring into an array, sort it, and then check if two consecutive characters are equal).
 Looking forward to tomorrow's challenge! 💪
+
+### Day 7
+Ouch. I guess this is part of learning Rust. I think it is called "fighting with the borrower". After banging my head against the wall for two days I still don't manage to get anything close to compiling. But I'm learning stuff!
+I'll skip for now
+
+### Day 8
+Relatively easy day. `Rust` is so quick that the brutal brute force algorithm works in a snap. So why complicating things? This is pretty basic coding, but I still manage to have a bug in the formula. 🤦 Thankfully I can easily make `unit tests` in Rust to test each basic functions with basic cases, and I found the error pretty quickly. One day where Rust really shines!
