@@ -98,6 +98,8 @@ fn main() {
                 }
                 9 => {
                     day9::solve_1::solve();
+                    println!("Solving question 2 -=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-");
+                    day9::solve_2::solve();
                 }
                 _ => println!("Module not found!"),
             }
