@@ -56,3 +56,9 @@ I'll skip for now
 
 ### Day 8
 Relatively easy day. `Rust` is so quick that the brutal brute force algorithm works in a snap. So why complicating things? This is pretty basic coding, but I still manage to have a bug in the formula. 🤦 Thankfully I can easily make `unit tests` in Rust to test each basic functions with basic cases, and I found the error pretty quickly. One day where Rust really shines!
+
+### Day 9
+Pretty interesting problem today. Didn't find anything extremely difficult. Having a `Option` and a `match` in Rust makes the branching readable (instead of chained `if ... else`).
+
+### Day 10
+Using regular expressions to parse the input. The first question seems a bit pointless, but it's a rehearsal for the second one. The algorithm is not excessively complex, but the problem in itself is mind-blowing. How do long did it take to create this question right so that the player input is correct? I am really amazed... 🙇

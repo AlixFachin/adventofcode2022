@@ -2,6 +2,7 @@ use std::env;
 use std::fs;
 
 mod day1;
+mod day10;
 mod day2;
 mod day3;
 mod day4;
@@ -100,6 +101,11 @@ fn main() {
                     day9::solve_1::solve();
                     println!("Solving question 2 -=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-");
                     day9::solve_2::solve();
+                }
+                10 => {
+                    day10::solve_1::solve();
+                    println!("Solving question 2 -=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-");
+                    day10::solve_2::solve();
                 }
                 _ => println!("Module not found!"),
             }
