@@ -53,6 +53,12 @@ Looking forward to tomorrow's challenge! 💪
 ### Day 7
 Ouch. I guess this is part of learning Rust. I think it is called "fighting with the borrower". After banging my head against the wall for two days I still don't manage to get anything close to compiling. But I'm learning stuff!
 I'll skip for now
+_Edit later..._
+After four days of struggle I managed to solve those questions at last!
+The issue for me was not the algorithm per se, but how to build a structure which would compile in Rust!
+After refactoring my code 5 times, I ended up using the following two principles:
+* Encapsulate as much as possible the use of variables. Another way to say it, try to avoid as much as possible to propagate mutable references to other objects. If one Struct can do everything internally, it will save a lot of headaches!
+* For a tree, instead of storing an actual pointer or reference to a subtree, it is better to have somewhere a big vector with all the sub-trees (central ownership of data, no need for borrowing) and store in the tree structure an integer `usize` which points to the actual sub-tree.
 
 ### Day 8
 Relatively easy day. `Rust` is so quick that the brutal brute force algorithm works in a snap. So why complicating things? This is pretty basic coding, but I still manage to have a bug in the formula. 🤦 Thankfully I can easily make `unit tests` in Rust to test each basic functions with basic cases, and I found the error pretty quickly. One day where Rust really shines!
@@ -62,3 +68,9 @@ Pretty interesting problem today. Didn't find anything extremely difficult. Havi
 
 ### Day 10
 Using regular expressions to parse the input. The first question seems a bit pointless, but it's a rehearsal for the second one. The algorithm is not excessively complex, but the problem in itself is mind-blowing. How do long did it take to create this question right so that the player input is correct? I am really amazed... 🙇
+
+### Day 11
+Getting a bit hairy...🙈
+The first question of the day was not excessively complicated but long to understand.
+I chose not to parse the input text - it was small enough to hard-code every parameter manually in a `init()` function.
+Learning of the day in Rust: As you cannot get a `Struct` reference with `mut` of only some of the fields, it is better to encapsulate all the immutable data inside one Struct, and all the mutable data inside another Struct. This lowers the risk of having to borrow an immutable reference before a mutable one, which is refused by the compiler.
