@@ -118,6 +118,8 @@ fn main() {
                 }
                 12 => {
                     day12::solve_1::solve();
+                    println!("Solving question 2 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+                    day12::solve_2::solve();
                 }
                 _ => println!("Module not found!"),
             }

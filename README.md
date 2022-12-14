@@ -74,3 +74,11 @@ Getting a bit hairy...🙈
 The first question of the day was not excessively complicated but long to understand.
 I chose not to parse the input text - it was small enough to hard-code every parameter manually in a `init()` function.
 Learning of the day in Rust: As you cannot get a `Struct` reference with `mut` of only some of the fields, it is better to encapsulate all the immutable data inside one Struct, and all the mutable data inside another Struct. This lowers the risk of having to borrow an immutable reference before a mutable one, which is refused by the compiler.
+
+### Day 12
+This was *painful*.
+I don't really want to use external crates to implement tree traversal, and I got stuck for a few days trying to understand where my algorithm was wrong.
+After four days of not getting it, I must admit I googled the answer and coded it.
+The solution is to use a queue (FIFO) to browse the tree, so that all the squares at equal distance from start are covered at the same time. I used a recursive algorithm (depth-first I guess) which makes it very complicated to manage the flags of whether a square has been already visited or not. (And makes the debugging really complicated as the information you can print is always stacked and tough to read).
+On the positive side, I struggled with the borrower much less than previous days. 👍
+
