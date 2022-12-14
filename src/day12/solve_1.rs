@@ -1,6 +1,8 @@
-use std::fs;
+use std::{collections::VecDeque, fs};
 
 const FILEPATH: &str = "src/day12/input.txt";
+const END_CODE: i32 = 'z' as i32 - 'a' as i32;
+
 #[derive(Debug)]
 struct GameData {
     start: (isize, isize),
@@ -34,60 +36,35 @@ fn can_move(
         <= (game_data.height_matrix[current_row][current_col] + 1);
 }
 
-fn get_shortest_path(
-    game_data: &GameData,
-    current_row: &usize,
-    current_col: &usize,
-    visited_table: &mut Vec<Vec<bool>>,
-    path_length: i32,
-) -> Option<i32> {
-    let mut current_solution: Option<i32> = None;
+fn get_shortest_path(game_data: &GameData, visited_table: &mut Vec<Vec<bool>>) -> Option<i32> {
+    let mut queue: VecDeque<_> = VecDeque::new();
+    queue.push_back((game_data.start.0, game_data.start.1, 0));
 
-    if (*current_row as isize, *current_col as isize) == game_data.end {
-        return Some(path_length);
-    }
-    println!(
-        "Checking path starting at {},{} - current length is {}",
-        &current_row, &current_col, path_length
-    );
-    for (delta_row, delta_col) in vec![(-1 as isize, 0), (0, 1), (1, 0), (0, -1 as isize)] {
-        let (next_row, next_col) = (
-            (*current_row as isize + delta_row),
-            (*current_col as isize + delta_col),
-        );
-        if can_move(
-            game_data,
-            *current_row,
-            *current_col,
-            next_row,
-            next_col,
-            visited_table,
-        ) {
-            let next_row: usize = next_row as usize;
-            let next_col: usize = next_col as usize;
-            visited_table[next_row as usize][next_col as usize] = true;
-            let direction_solution = get_shortest_path(
+    while let Some((row, col, len)) = queue.pop_front() {
+        if (row, col) == game_data.end {
+            return Some(len);
+        }
+
+        for (delta_row, delta_col) in vec![(1 as isize, 0), (0, 1), (-1, 0), (0, -1 as isize)] {
+            let (next_row, next_col) = ((row + delta_row), (col + delta_col));
+            if can_move(
                 game_data,
-                &next_row,
-                &next_col,
+                row as usize,
+                col as usize,
+                next_row,
+                next_col,
                 visited_table,
-                path_length + 1,
-            );
-            if let Some(path) = direction_solution {
-                if let Some(previous_path) = current_solution {
-                    if path < previous_path {
-                        current_solution = Some(path);
-                    }
-                } else {
-                    // no previous solution
-                    current_solution = Some(path);
-                }
+            ) {
+                let next_row: usize = next_row as usize;
+                let next_col: usize = next_col as usize;
+
+                visited_table[next_row][next_col] = true;
+                queue.push_back((next_row as isize, next_col as isize, len + 1));
             }
-            visited_table[next_row as usize][next_col as usize] = false;
         }
     }
 
-    return current_solution;
+    return None;
 }
 
 #[test]
@@ -105,7 +82,7 @@ fn test_algo() {
         ],
     };
 
-    let mut visited_table = vec![
+    let visited_table = vec![
         vec![false, false, false, false],
         vec![false, true, false, false],
         vec![true, false, true, false],
@@ -132,6 +109,19 @@ fn test_algo() {
     assert!(can_move(&test_game, 1, 1, 2, 1, &visited_table));
     // Do we allow a move to lower height
     assert!(can_move(&test_game, 1, 1, 1, 0, &visited_table));
+
+    let flat_game = GameData {
+        start: (1, 1),
+        end: (2, 2),
+        nr_rows: 4,
+        nr_cols: 4,
+        height_matrix: vec![
+            vec![1, 1, 1, 1],
+            vec![1, 1, 1, 1],
+            vec![1, 1, 1, 1],
+            vec![1, 1, 1, 1],
+        ],
+    };
 }
 
 pub fn solve() {
@@ -159,7 +149,7 @@ pub fn solve() {
                 }
                 'E' => {
                     game_data.end = (row, col);
-                    line_vec.push(25);
+                    line_vec.push(END_CODE);
                 }
                 _ => {
                     line_vec.push(c as i32 - ('a' as i32));
@@ -198,22 +188,8 @@ pub fn solve() {
         already_visited.push(bool_vec);
     }
 
-    let start_pos_row = game_data.start.0 as usize;
-    let start_pos_col = game_data.start.1 as usize;
-
     // Here we go for the nasty loop
-    let algo_result = get_shortest_path(
-        &game_data,
-        &start_pos_row,
-        &start_pos_col,
-        &mut already_visited,
-        0,
-    );
-
-    println!(
-        "Current grid: \n {:?}\n{:?}",
-        game_data.height_matrix, game_data
-    );
+    let algo_result = get_shortest_path(&game_data, &mut already_visited);
 
     println!("Result of question 1 is {}", algo_result.unwrap());
 }

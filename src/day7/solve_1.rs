@@ -6,7 +6,6 @@ const FILEPATH: &str = "src/day7/input.txt";
 // Description of filesystem structure
 #[derive(Debug)]
 struct Dir {
-    name: String,
     files: HashMap<String, u64>,
     dirs: HashMap<String, usize>,
 }
@@ -20,7 +19,6 @@ struct FileSystem {
 impl FileSystem {
     fn init(&mut self) {
         self.dir_list = vec![Dir {
-            name: String::from("/"),
             files: HashMap::new(),
             dirs: HashMap::new(),
         }];
@@ -30,7 +28,6 @@ impl FileSystem {
 
     fn mk_dir(&mut self, dir_name: &str) -> usize {
         let mut new_dir = Dir {
-            name: String::from(dir_name),
             files: HashMap::new(),
             dirs: HashMap::new(),
         };

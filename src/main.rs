@@ -112,7 +112,7 @@ fn main() {
                     day10::solve_2::solve();
                 }
                 11 => {
-                    //day11::solve_1::solve();
+                    day11::solve_1::solve();
                     println!("Solving question 2 -=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-");
                     day11::solve_2::solve();
                 }

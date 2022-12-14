@@ -184,13 +184,13 @@ impl MonkeyBusiness {
         }
     }
 
-    fn iterate_one_round(&self, monkeyData: &mut MonkeyData) {
+    fn iterate_one_round(&self, monkey_data: &mut MonkeyData) {
         for monkey in &self.monkey_list {
             // First, check if the monkey has objects
             if DEBUG_DISPLAY {
                 println!("Start of monkey {} turn........", monkey.number);
             }
-            monkeyData.one_monkey_turn(monkey);
+            monkey_data.one_monkey_turn(monkey);
         }
     }
 }

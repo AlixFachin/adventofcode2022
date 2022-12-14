@@ -18,7 +18,6 @@ use std::collections::VecDeque;
 
 const TEST_MODE: bool = false;
 const NR_ROUNDS: i32 = 10_000;
-const DEBUG_DISPLAY: bool = true;
 
 enum MonkeyOp {
     Add(i32),
@@ -191,19 +190,19 @@ impl MonkeyBusiness {
         }
     }
 
-    fn iterate_one_round(&self, monkeyData: &mut MonkeyData) {
+    fn iterate_one_round(&self, monkey_data: &mut MonkeyData) {
         for monkey in &self.monkey_list {
             // First, check if the monkey has objects
             // if DEBUG_DISPLAY {
             //     println!("Start of monkey {} turn........", monkey.number);
             // }
-            monkeyData.one_monkey_turn(monkey);
+            monkey_data.one_monkey_turn(monkey);
         }
     }
 }
 
 // helper to create the worry modulo array at the beginning
-fn createModuloVector(input_array: &Vec<i32>, n: usize) -> VecDeque<Vec<i32>> {
+fn create_modulo_vector(input_array: &Vec<i32>, n: usize) -> VecDeque<Vec<i32>> {
     let mut return_queue: VecDeque<Vec<i32>> = VecDeque::new();
     for worry in input_array {
         let mut worry_vec: Vec<i32> = Vec::new();
@@ -238,14 +237,14 @@ impl MonkeyData {
         } else {
             self.monkey_activity = vec![0, 0, 0, 0, 0, 0, 0, 0];
             self.item_list = vec![
-                createModuloVector(&Vec::from([56, 52, 58, 96, 70, 75, 72]), 8),
-                createModuloVector(&Vec::from([75, 58, 86, 80, 55, 81]), 8),
-                createModuloVector(&Vec::from([73, 68, 73, 90]), 8),
-                createModuloVector(&Vec::from([72, 89, 55, 51, 59]), 8),
-                createModuloVector(&Vec::from([76, 76, 91]), 8),
-                createModuloVector(&Vec::from([88]), 8),
-                createModuloVector(&Vec::from([64, 63, 56, 50, 77, 55, 55, 86]), 8),
-                createModuloVector(&Vec::from([79, 58]), 8),
+                create_modulo_vector(&Vec::from([56, 52, 58, 96, 70, 75, 72]), 8),
+                create_modulo_vector(&Vec::from([75, 58, 86, 80, 55, 81]), 8),
+                create_modulo_vector(&Vec::from([73, 68, 73, 90]), 8),
+                create_modulo_vector(&Vec::from([72, 89, 55, 51, 59]), 8),
+                create_modulo_vector(&Vec::from([76, 76, 91]), 8),
+                create_modulo_vector(&Vec::from([88]), 8),
+                create_modulo_vector(&Vec::from([64, 63, 56, 50, 77, 55, 55, 86]), 8),
+                create_modulo_vector(&Vec::from([79, 58]), 8),
             ];
             self.divisor_list = vec![11, 3, 5, 7, 19, 2, 13, 17];
         }
