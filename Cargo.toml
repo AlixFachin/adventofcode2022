@@ -9,3 +9,5 @@ edition = "2021"
 regex="1"
 serde_json="1.0.89"
 serde="1.0.15"
+termion="2.0.1"
+tokio = { version = "1", features = ["full"] }

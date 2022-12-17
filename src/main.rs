@@ -6,6 +6,7 @@ mod day10;
 mod day11;
 mod day12;
 mod day13;
+mod day14;
 mod day2;
 mod day3;
 mod day4;
@@ -126,6 +127,9 @@ fn main() {
                     day13::solve_1::solve();
                     println!("Solving question 2 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
                     day13::solve_2::solve();
+                }
+                14 => {
+                    day14::solve_2::solve();
                 }
                 _ => println!("Module not found!"),
             }

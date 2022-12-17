@@ -82,3 +82,18 @@ After four days of not getting it, I must admit I googled the answer and coded i
 The solution is to use a queue (FIFO) to browse the tree, so that all the squares at equal distance from start are covered at the same time. I used a recursive algorithm (depth-first I guess) which makes it very complicated to manage the flags of whether a square has been already visited or not. (And makes the debugging really complicated as the information you can print is always stacked and tough to read).
 On the positive side, I struggled with the borrower much less than previous days. 👍
 
+### Day 13
+That was painful as well.
+Luckily I didn't spend too much time on the parsing (thank you `sarde_json`!) but I spent too much time trying to find a bug on the algorithm.
+I didn't know how to re-create a `sarde` Value, so I thought I would be clever and I skipped one case in the recursion, going directly through the leaf case.
+After three days of searching, I looked at how to build a `Value`, tried it - and got the right answer. Going back to my previous function, I made the code quit when it found an error, and it turns out I forgot to take into consideration a pretty important case! 🤦
+The positive things are:
+* I learned how to use `sarde`
+* I got better at how to use `Options`
+* I learned how to sort a Vector with a custom comparison operation. Yay!
+
+### Day 14
+That was fun.
+The nice part was looking into the `termion` crate to make an animation of the puzzle.
+Most of the time was spent making the animation nice, I don't think I had any bugs in the code. (Although the animation is still flickery...)
+
