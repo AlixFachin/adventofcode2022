@@ -109,19 +109,6 @@ fn test_algo() {
     assert!(can_move(&test_game, 1, 1, 2, 1, &visited_table));
     // Do we allow a move to lower height
     assert!(can_move(&test_game, 1, 1, 1, 0, &visited_table));
-
-    let flat_game = GameData {
-        start: (1, 1),
-        end: (2, 2),
-        nr_rows: 4,
-        nr_cols: 4,
-        height_matrix: vec![
-            vec![1, 1, 1, 1],
-            vec![1, 1, 1, 1],
-            vec![1, 1, 1, 1],
-            vec![1, 1, 1, 1],
-        ],
-    };
 }
 
 pub fn solve() {

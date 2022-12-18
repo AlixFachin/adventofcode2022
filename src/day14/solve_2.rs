@@ -1,14 +1,12 @@
 use regex::Regex;
-use std::{fs, sync::RwLock};
+use std::fs;
 use termion::{clear, color, cursor};
-use tokio::time::{sleep, Duration};
 
 const FILEPATH: &str = "src/day14/input.txt";
 const PUZZLE_WIDTH: usize = 800;
 const PUZZLE_HEIGHT: usize = 200;
 #[derive(Debug, Clone, PartialEq)]
 enum Block {
-    Sand,
     Rock,
     Empty,
     Rest,
@@ -21,13 +19,12 @@ fn display_map(
     min_height: usize,
     max_height: usize,
 ) {
-    print!("{}{}", termion::clear::All, termion::cursor::Goto(1, 2));
+    print!("{}{}", clear::All, cursor::Goto(1, 2));
     for row in min_height..max_height.min(PUZZLE_HEIGHT - 1) {
         let display_slice = &cave_map[row][min_x..max_x.min(PUZZLE_WIDTH - 1)];
         for b in display_slice {
             match b {
                 Block::Empty => print!("{}.", color::Fg(color::LightWhite)),
-                Block::Sand => print!("{}O", color::Fg(color::Yellow)),
                 Block::Rock => print!("{}X", color::Fg(color::White)),
                 Block::Rest => print!("{}o", color::Fg(color::LightYellow)),
             }

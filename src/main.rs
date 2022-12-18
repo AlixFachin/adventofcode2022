@@ -129,6 +129,8 @@ fn main() {
                     day13::solve_2::solve();
                 }
                 14 => {
+                    day14::solve_1::solve();
+                    println!("Solving question 2 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
                     day14::solve_2::solve();
                 }
                 _ => println!("Module not found!"),
