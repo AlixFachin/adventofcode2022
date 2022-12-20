@@ -97,3 +97,8 @@ That was fun.
 The nice part was looking into the `termion` crate to make an animation of the puzzle.
 Most of the time was spent making the animation nice, I don't think I had any bugs in the code. (Although the animation is still flickery...)
 
+### Day 15
+I begin to feel the fatigue of Advent of Code, given that so far I spent 100% of my time outside of work (and outside of household chores) doing AoC. I needed to take a break, so this question took more time than what the actual algorithm complexity. Ouch! 😫
+The question is apart from that pretty simple. Question 1 is mostly a parsing question, figuring out what this all means.
+Question 2 is a bit more difficult, brute force being impossible to compute.
+I solved this by computing for each line the intervals of intersection between the "circles" around each sensor and the current line, and then getting the union of those intervals. For all the lines but the question solution, those intervals will merge into something at least bigger than [0, 4E6] so not too difficult to follow
